@@ -30,6 +30,13 @@ public class Course {
 	public Course() {
 	}
 
+	public Course(String name, Lecturer lecturer, String language, Float average) {
+		this.name = name;
+		this.lecturer = lecturer;
+		this.language = language;
+		this.average = average;
+	}
+
 	public Integer getCourseId() {
 		return courseId;
 	}

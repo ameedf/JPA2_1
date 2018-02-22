@@ -1,6 +1,6 @@
 package com.ameed.jpa;
 
-import com.ameed.jpa.entities.CourseDAO;
+import services.MyService;
 
 public class MainApp {
 	public static void main(String[] args) {
@@ -13,7 +13,11 @@ public class MainApp {
 	}
 
 	private static void test() {
-		CourseDAO dao = new CourseDAO();
-		dao.listAll();
+		MyService service = new MyService();
+		service.listCourses();
+		service.createOrUpdateCourse("Dummy course 4", "Lecturer 4", "NONE", 88.0f);
+		service.createOrUpdateCourse("Dummy course 4", "Lecturer 5", "dummy", 67.0f);
+		service.listCourses();
+		service.end();
 	}
 }
