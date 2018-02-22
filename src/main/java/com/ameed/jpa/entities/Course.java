@@ -5,11 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "courses")
-public class Course2 {
+public class Course {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "course_id")
@@ -17,22 +19,15 @@ public class Course2 {
 
 	private String name;
 
-	private String lecturer;
+	@ManyToOne
+	@JoinColumn(name="lecturer_id")
+	private Lecturer lecturer;
 
 	private String language;
 
 	private Float average;
 
-	public Course2() {
-	}
-
-	public Course2(Integer courseId, String name, String lecturer, String language, Float average) {
-		super();
-		this.courseId = courseId;
-		this.name = name;
-		this.lecturer = lecturer;
-		this.language = language;
-		this.average = average;
+	public Course() {
 	}
 
 	public Integer getCourseId() {
@@ -51,11 +46,11 @@ public class Course2 {
 		this.name = name;
 	}
 
-	public String getLecturer() {
+	public Lecturer getLecturer() {
 		return lecturer;
 	}
 
-	public void setLecturer(String lecturer) {
+	public void setLecturer(Lecturer lecturer) {
 		this.lecturer = lecturer;
 	}
 
